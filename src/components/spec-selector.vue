@@ -93,11 +93,14 @@
       getDataShowObj: function (objOrigin) {
         let dataObj = {}
         objOrigin.forEach(function (value) {
-          this.newChild(dataObj,value.instock)
-          this.newChild(dataObj[value.instock],value.attrs.size)
-          this.newChild(dataObj[value.instock][value.attrs.size],value.attrs.color)
-          this.newChild(dataObj[value.instock][value.attrs.size][value.attrs.color],value.attrs.pattern)
+//          this.newChild(dataObj, value.instock)
+//          this.newChild(dataObj[value.instock], value.attrs.size)
+//          this.newChild(dataObj[value.instock][value.attrs.size], value.attrs.color)
+//          this.newChild(dataObj[value.instock][value.attrs.size][value.attrs.color], value.attrs.pattern)
+          let arrT= [value.instock, value.attrs.size, value.attrs.color, value.attrs.pattern]
+          arrT.reduce(this.newChild,dataObj)
         }, this)
+//        console.log(JSON.stringify(dataObj))
         return dataObj
       },
       sortObj: function (obj) {
